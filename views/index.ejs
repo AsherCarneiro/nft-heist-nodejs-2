@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OpenSea Asset Scraper</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+    input[type="text"], input[type="number"] {
+      width: 300px;
+      padding: 5px;
+    }
+    input[type="submit"] {
+      padding: 8px 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .message {
+      color: green;
+      margin-top: 10px;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>OpenSea Asset Scraper</h1>
+  <% if (locals.message) { %>
+    <p class="message"><%= locals.message %></p>
+  <% } %>
+  <% if (locals.error) { %>
+    <p class="error"><%= locals.error %></p>
+  <% } %>
+  <form action="/scrape-assets" method="POST">
+    <label for="username">Username:</label>
+    <br>
+    <input type="text" id="username" name="username" required>
+    <br>
+    <label for="limit">Limit:</label>
+    <br>
+    <input type="number" id="limit" name="limit" min="1">
+    <br>
+    <input type="submit" value="Scrape Assets">
+  </form>
+</body>
+</html>
